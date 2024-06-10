@@ -115,19 +115,19 @@ dataset_ref = weave.ref('bert-paper-qna').get()
 # TEST1
 config = {
   "model_name": "gpt-4", #gpt-4, gpt-3.5-turbo, text-davinci-003, ...
-  "prompt_version":'labsirius/LLMOps-Pycon2024/prompt_template:v1'
+  "prompt_version":'nick-py/LLMOps-Pycon2024/prompt_template:v1'
 }
 
 with wandb.init(project="LLMOps-Pycon2024",name=f"Evaluate-RAG ExecId-{args.IdExecution}", job_type="evaluate-rag") as run:
   config = wandb.config
   
-  artifact = run.use_artifact('labsirius/LLMOps-Pycon2024/vector-database:v3', type='dataset')
+  artifact = run.use_artifact('nick-py/LLMOps-Pycon2024/vector-database:v3', type='dataset')
   artifact_dir = artifact.download()
   
   vectorstore = Chroma(persist_directory="artifacts/vector-database-v3", embedding_function=embedding_function)
   print(vectorstore.similarity_search("What is the name of the new language representation model introduced in the document?"))
   
-  artifact = run.use_artifact('labsirius/LLMOps-Pycon2024/prompt_template:v0', type='dataset')
+  artifact = run.use_artifact('nick-py/LLMOps-Pycon2024/prompt_template:v0', type='dataset')
   artifact_dir = artifact.download()
 
   with open(os.path.join(artifact_dir, "prompt_template.txt"), 'r') as file:
@@ -150,13 +150,13 @@ with wandb.init(project="LLMOps-Pycon2024",name=f"Evaluate-RAG ExecId-{args.IdEx
 with wandb.init(project="LLMOps-Pycon2024",name=f"Evaluate-RAG ExecId-{args.IdExecution}", job_type="evaluate-rag") as run:
   config = wandb.config
   
-  artifact = run.use_artifact('labsirius/LLMOps-Pycon2024/vector-database:v3', type='dataset')
+  artifact = run.use_artifact('nick-py/LLMOps-Pycon2024/vector-database:v3', type='dataset')
   artifact_dir = artifact.download()
   
   vectorstore = Chroma(persist_directory="artifacts/vector-database-v3", embedding_function=embedding_function)
   print(vectorstore.similarity_search("What is the name of the new language representation model introduced in the document?"))
   
-  artifact = run.use_artifact('labsirius/LLMOps-Pycon2024/prompt_template:v1', type='dataset')
+  artifact = run.use_artifact('nick-py/LLMOps-Pycon2024/prompt_template:v1', type='dataset')
   artifact_dir = artifact.download()
 
   with open(os.path.join(artifact_dir, "prompt_template.txt"), 'r') as file:
