@@ -46,7 +46,7 @@ dataset_ref = weave.ref('bert-paper-qna').get()
 
 # Download Vector Database
 run = wandb.init("LLMOps-Pycon2024")
-artifact = run.use_artifact('labsirius/LLMOps-Pycon2024/vector-database:v3', type='dataset')
+artifact = run.use_artifact('nick-py/LLMOps-Pycon2024/vector-database:v3', type='dataset')
 artifact_dir = artifact.download()
 vectorstore = Chroma(persist_directory="artifacts/vector-database-v3", embedding_function=embedding_function)
 print(vectorstore.similarity_search("What is the name of the new language representation model introduced in the document?"))
@@ -68,7 +68,7 @@ class RAGModel(Model):
             azure_deployment=self.model_name,
         )
         run = wandb.init("LLMOps-Pycon2024")
-        artifact = run.use_artifact('labsirius/LLMOps-Pycon2024/prompt_template:v0', type='dataset')
+        artifact = run.use_artifact('nick-py/LLMOps-Pycon2024/prompt_template:v0', type='dataset')
         artifact_dir = artifact.download()
         
         with open(os.path.join(artifact_dir, "prompt_template.txt"), 'r') as file:
